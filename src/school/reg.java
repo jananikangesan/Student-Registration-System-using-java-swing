@@ -360,15 +360,7 @@ public class reg extends javax.swing.JFrame {
 
                     txtname.requestFocus();
            
-             }
-             
-       
-                
-        
-          
-          
-            
-           
+             }    
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(reg.class.getName()).log(Level.SEVERE, null, ex);
