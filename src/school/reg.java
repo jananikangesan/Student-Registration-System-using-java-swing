@@ -47,11 +47,11 @@ public class reg extends javax.swing.JFrame {
         txtname = new javax.swing.JTextField();
         txtmobile = new javax.swing.JTextField();
         txtcourse = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        studentTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,24 +72,24 @@ public class reg extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Update");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
 
@@ -114,11 +114,11 @@ public class reg extends javax.swing.JFrame {
                             .addComponent(txtcourse)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(addButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(updateButton)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton3)))
+                        .addComponent(deleteButton)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -138,13 +138,13 @@ public class reg extends javax.swing.JFrame {
                     .addComponent(txtcourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(addButton)
+                    .addComponent(updateButton)
+                    .addComponent(deleteButton))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        studentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -163,12 +163,12 @@ public class reg extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        studentTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                studentTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(studentTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,7 +222,7 @@ public class reg extends javax.swing.JFrame {
             ResultSetMetaData Rss=rs.getMetaData();
             c=Rss.getColumnCount();
             
-            DefaultTableModel Df=(DefaultTableModel) jTable1.getModel();
+            DefaultTableModel Df=(DefaultTableModel) studentTable.getModel();
             Df.setRowCount(0);
             
             while(rs.next()){
@@ -247,7 +247,7 @@ public class reg extends javax.swing.JFrame {
         
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         String name=txtname.getText();
         String mobile=txtmobile.getText();
@@ -280,22 +280,22 @@ public class reg extends javax.swing.JFrame {
         }
         
       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addButtonActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void studentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentTableMouseClicked
         // TODO add your handling code here:
-         DefaultTableModel Df=(DefaultTableModel) jTable1.getModel();
-         int selectedIndex=jTable1.getSelectedRow();
+         DefaultTableModel Df=(DefaultTableModel) studentTable.getModel();
+         int selectedIndex=studentTable.getSelectedRow();
          
          txtname.setText(Df.getValueAt(selectedIndex, 1).toString());
          txtmobile.setText(Df.getValueAt(selectedIndex, 2).toString());
          txtcourse.setText(Df.getValueAt(selectedIndex, 3).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_studentTableMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel Df=(DefaultTableModel) jTable1.getModel();
-         int selectedIndex=jTable1.getSelectedRow();
+        DefaultTableModel Df=(DefaultTableModel) studentTable.getModel();
+         int selectedIndex=studentTable.getSelectedRow();
          
          try {
              
@@ -330,13 +330,13 @@ public class reg extends javax.swing.JFrame {
             Logger.getLogger(reg.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         
-         DefaultTableModel Df=(DefaultTableModel) jTable1.getModel();
-         int selectedIndex=jTable1.getSelectedRow();
+         DefaultTableModel Df=(DefaultTableModel) studentTable.getModel();
+         int selectedIndex=studentTable.getSelectedRow();
          
          try {
              
@@ -368,7 +368,7 @@ public class reg extends javax.swing.JFrame {
             Logger.getLogger(reg.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,18 +406,18 @@ public class reg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable studentTable;
     private javax.swing.JTextField txtcourse;
     private javax.swing.JTextField txtmobile;
     private javax.swing.JTextField txtname;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
